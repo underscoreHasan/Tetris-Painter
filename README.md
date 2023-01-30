@@ -10,7 +10,7 @@
 
 - Who will use it?
 
-    -The application could be used by **anyone** who wants to play the game and has a computer that is able to render it.
+    - The application could be used by **anyone** who wants to play the game and has a computer that is able to render it.
 
 
 - Why is this project of interest to you?
