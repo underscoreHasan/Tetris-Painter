@@ -8,6 +8,7 @@ import java.util.List;
 public class BlockCollection {
     private List<Block> blockList;
     private List<Point> pointList;
+    private int score;
     // private List<Point> removedSegments;
 
     // EFFECTS: Constructs an empty collection of blocks with an empty blockList,
@@ -21,13 +22,26 @@ public class BlockCollection {
     // REQUIRES: tryMove() == true && collisionCheck == true
     // MODIFIES: this
     // EFFECTS: Adds the curPiece to the fixedBlocks
-    private void addBlock(Block block) {
+    private void fixBlock(Block block) {
         blockList.add(block);
-
         Collections.addAll(pointList, block.getOrientation());
+        score += 10;
     }
 
-/*    // MODIFIES: this
+    public List<Block> getBlockList() {
+        return blockList;
+    }
+
+    public List<Point> getPointList() {
+        return pointList;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+/*
+    // MODIFIES: this
     // EFFECTS: Removes the block segments and points that correspond to fully occupied
     //          horizontal lines from blockList and pointList
     private void removeLines() {
@@ -52,8 +66,5 @@ public class BlockCollection {
 
         return fullLines;
     }
-
-    private void dropBlocks() {
-
-    }*/
+*/
 }

@@ -14,6 +14,6 @@ public class BlockVoid extends Block {
                 {new Point(0,0), new Point(0,0), new Point(0,0), new Point(0,0)}
         });
         setColor(new Color(0, 0, 0));
-        setOrientation(1);
+        setOrientation(0);
     }
 }

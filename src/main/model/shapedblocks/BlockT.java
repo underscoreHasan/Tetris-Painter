@@ -14,6 +14,6 @@ public class BlockT extends Block {
                 {new Point(0,1), new Point(0,0), new Point(0,-1), new Point(-1,0)}
         });
         setColor(new Color(80, 0, 80));
-        setOrientation(1);
+        setOrientation(0);
     }
 }

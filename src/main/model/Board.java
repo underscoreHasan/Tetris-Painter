@@ -3,7 +3,6 @@ package model;
 import model.shapedblocks.*;
 
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -22,10 +21,31 @@ public class Board {
         fixedBlocks = new BlockCollection();
     }
 
+    //generate the next coordinates the block will be at
+    private boolean genNextCoordinates() {
+        //copy the curblock into a new object
+        //apply move
+        //get new coordinates
+        //pass each pair to check collision
+        //if false do not allow move
+        //if true curblock = new object
+        return false; //stub
+    }
+
+    //check if curBlock will hit the given x,y Coords (use pointsList from BlockCollection) once the proposed
+    // move is completed
+    private boolean checkCollision(Point p) {
+        return fixedBlocks.getPointList().contains(p);
+    }
+
+    // REQUIRES: curBlock == BlockVoid
+    // MODIFIES: this
+    // EFFECTS: sets curBlock to be one of 7 random Blocks, and places this curBlock at
+    //          the starting position x = BOARD_WIDTH / 2, y = 2
     @SuppressWarnings("methodlength")
-    private void newPiece() {
+    private void newBlock() {
         Random rand = new Random();
-        String blockType = POSSIBLE_BLOCKS.get(new Random().nextInt(POSSIBLE_BLOCKS.size()));
+        String blockType = POSSIBLE_BLOCKS.get(rand.nextInt(POSSIBLE_BLOCKS.size()));
 
         switch (blockType) {
             case "I":
@@ -51,15 +71,6 @@ public class Board {
                 break;
         }
 
-        curBlock.setAnchorPoint(new Point(5, 2));
+        curBlock.setAnchorPoint(BOARD_WIDTH / 2, 2);
     }
-
-    private boolean checkCollision(int x, int y) {
-        return false;
-    }
-    //array, 1 element representing each position in array
-    //0 if unoccupied
-    //1 if occupied
-
-
 }
