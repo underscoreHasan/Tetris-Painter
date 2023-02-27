@@ -24,7 +24,7 @@ public class Board {
 
     //used by ui, pass block.movex() to it
     //test next coordinates the block will be at. True if valid, false if invalid
-    private boolean tryNextCoordinates(Point newAnchorPoint) {
+    public boolean tryNextCoordinates(Point newAnchorPoint) {
         Point[] curOrientation = curBlock.getOrientation();
 
         for (Point p : curOrientation) {
@@ -39,7 +39,7 @@ public class Board {
         return true;
     }
 
-    private boolean tryNextCoordinates(Point[] newCoords, String dir) {
+    public boolean tryNextCoordinates(Point[] newCoords, String dir) {
         for (Point p : newCoords) {
             if (checkCollision(p)) {
                 return false;
@@ -73,7 +73,7 @@ public class Board {
     // EFFECTS: sets curBlock to be one of 7 random Blocks, and places this curBlock at
     //          the starting position x = BOARD_WIDTH / 2, y = 2
     @SuppressWarnings("methodlength")
-    private void newBlock() {
+    public void newBlock() {
         Random rand = new Random();
         String blockType = POSSIBLE_BLOCKS.get(rand.nextInt(POSSIBLE_BLOCKS.size()));
 
@@ -102,5 +102,13 @@ public class Board {
         }
 
         curBlock.setAnchorPoint(BOARD_WIDTH / 2, 2);
+    }
+
+    public Block getCurBlock() {
+        return curBlock;
+    }
+
+    public BlockCollection getFixedBlocks() {
+        return fixedBlocks;
     }
 }

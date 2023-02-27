@@ -21,7 +21,7 @@ public class BlockCollection {
     // REQUIRES: tryMove() == true && collisionCheck == true
     // MODIFIES: this
     // EFFECTS: Adds the curPiece to the fixedBlocks
-    private void fixBlock(Block block) {
+    public void fixBlock(Block block) {
         blockList.add(block);
         Point[] curOrientation = block.getOrientation();
 

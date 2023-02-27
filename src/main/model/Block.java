@@ -6,8 +6,8 @@ public abstract class Block {
 
     private Point[][] coordStates;
     private Color color;
-    private Point[] orientation;
-    private Point anchorPoint;
+    private Point[] orientation = new Point[4];
+    private Point anchorPoint = new Point();
     private int rotationState;
 
     // REQUIRES: anchorPoint.x > 0 && anchorPoint.y > 0
