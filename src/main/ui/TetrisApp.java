@@ -17,7 +17,8 @@ public class TetrisApp {
     private BlockCollection fixedBlocks;
     private Scanner input;
 
-    private static final List<String> POSSIBLE_BLOCKS = List.of("I", "J", "L", "O", "S", "T", "Z");
+    //private static final List<String> POSSIBLE_BLOCKS = List.of("I", "J", "L", "O", "S", "T", "Z");
+    private static final String[] POSSIBLE_BLOCKS = {"I", "J", "L", "O", "S", "T", "Z"};
 
     // EFFECTS: runs the Tetris Game.
     public TetrisApp() {
@@ -112,7 +113,8 @@ public class TetrisApp {
     @SuppressWarnings("methodlength")
     public void newBlock() {
         Random rand = new Random();
-        String blockType = POSSIBLE_BLOCKS.get(rand.nextInt(POSSIBLE_BLOCKS.size()));
+        // String blockType = POSSIBLE_BLOCKS.get(rand.nextInt(POSSIBLE_BLOCKS.size()));
+        String blockType = POSSIBLE_BLOCKS[rand.nextInt(POSSIBLE_BLOCKS.length)];
 
         switch (blockType) {
             case "I":
