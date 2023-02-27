@@ -2,6 +2,10 @@ package model;
 
 import java.awt.*;
 
+// The abstract class that represents all the generic information and behaviour of a Block. This can be
+// considered a "shapeless" block that contains information such as color, it's central point(anchorPoint),
+// it's color, a counter for its orientation(rotationState), etc. while specialized information such
+// as the coordinates that define a Block's shape lives in the inherited classes for each shapedBlock.
 public abstract class Block {
 
     private Point[][] coordStates;
@@ -11,40 +15,45 @@ public abstract class Block {
     private int rotationState;
 
     // REQUIRES: anchorPoint.x > 0 && anchorPoint.y > 0
-    // EFFECTS: returns the coordinates of anchorPoint dropped by 1 line
-    public Point downOneLine() {
-        return new Point(anchorPoint.x, anchorPoint.y + 1);
+    // MODIFIES: this
+    // EFFECTS: drops the block down 1 coordinate by altering the anchorPoint
+    public void downOneLine() {
+        setAnchorPoint(anchorPoint.x, anchorPoint.y + 1);
     }
 
     // REQUIRES: anchorPoint.x > 0 && anchorPoint.y > 0
-    // EFFECTS: returns the coordinates of anchorPoint moved right 1 column
-    public Point moveRight() {
-        return new Point(anchorPoint.x + 1, anchorPoint.y);
+    // MODIFIES: this
+    // EFFECTS: moves the block 1 coordinate to the right by altering the anchorPoint
+    public void moveRight() {
+        setAnchorPoint(anchorPoint.x + 1, anchorPoint.y);
     }
 
     // REQUIRES: anchorPoint.x > 0 && anchorPoint.y > 0
-    // EFFECTS: returns the coordinates of anchorPoint moved left 1 column
-    public Point moveLeft() {
-        return new Point(anchorPoint.x - 1, anchorPoint.y);
+    // MODIFIES: this
+    // EFFECTS: moves the block 1 coordinate to the left by altering the anchorPoint
+    public void moveLeft() {
+        setAnchorPoint(anchorPoint.x - 1, anchorPoint.y);
     }
 
     // REQUIRES: anchorPoint.x > 0 && anchorPoint.y > 0
-    // EFFECTS: returns the orientation of the block if rotated anticlockwise 90° around the anchor point
-    public Point[] rotateLeft() {
+    // MODIFIES: this
+    // EFFECTS: rotates the block anticlockwise around anchorPoint
+    public void rotateLeft() {
         if (rotationState - 1 < 0) {
-            return this.coordStates[3];
+            setOrientation(3);
         } else {
-            return this.coordStates[rotationState - 1];
+            setOrientation(rotationState - 1);
         }
     }
 
     // REQUIRES: anchorPoint.x > 0 && anchorPoint.y > 0
-    // EFFECTS: returns the orientation of the block if rotated clockwise 90° around the anchor point
-    public Point[] rotateRight() {
+    // MODIFIES: this
+    // EFFECTS: rotates the block clockwise around anchorPoint
+    public void rotateRight() {
         if (rotationState + 1 > 3) {
-            return this.coordStates[0];
+            setOrientation(0);
         } else {
-            return this.coordStates[rotationState + 1];
+            setOrientation(rotationState + 1);
         }
     }
 
@@ -80,7 +89,7 @@ public abstract class Block {
     // MODIFIES: this
     // EFFECTS: Copies the array of Points at index i in this.coordStates into this.orientation
     public void setOrientation(int i) {
-        System.arraycopy(this.coordStates[i], 0, this.orientation, 0,4);;
+        System.arraycopy(this.coordStates[i], 0, this.orientation, 0, 4);
     }
 
     public int getRotationState() {
@@ -89,29 +98,5 @@ public abstract class Block {
 
     public void setRotationState(int rotationState) {
         this.rotationState = rotationState;
-    }
-
-    // MODIFIES: this
-    // EFFECTS: Increments the rotationState by 1
-    public void incRotationState() {
-        int newState = rotationState + 1;
-
-        if (newState > 3) {
-            rotationState = 0;
-        } else {
-            rotationState = newState;
-        }
-    }
-
-    // MODIFIES: this
-    // EFFECTS: Decrements the rotationState by 1
-    public void decRotationState() {
-        int newState = rotationState - 1;
-
-        if (newState < 0) {
-            rotationState = 3;
-        } else {
-            rotationState = newState;
-        }
     }
 }

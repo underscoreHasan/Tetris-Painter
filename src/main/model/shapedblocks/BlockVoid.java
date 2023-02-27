@@ -16,6 +16,5 @@ public class BlockVoid extends Block {
         setColor(new Color(0, 0, 0));
         setOrientation(0);
         setRotationState(0);
-        setRotationState(0);
     }
 }

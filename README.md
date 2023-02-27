@@ -28,3 +28,6 @@
 - As a user, I want to be able to view what the high score is.
 - As a user, I want to be able to place a block on a collection of placed blocks.
 - As a user, I want to see a collection of placed blocks at the bottom of the screen.
+
+## Attributions:
+- The UI in this project draws inspiration from the implementation of the UI in TellerApp.
