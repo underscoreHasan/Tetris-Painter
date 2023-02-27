@@ -2,7 +2,6 @@ package model;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class BlockCollection {
@@ -13,7 +12,7 @@ public class BlockCollection {
 
     // EFFECTS: Constructs an empty collection of blocks with an empty blockList,
     //          pointList and no removedSegments
-    public void blockCollection() {
+    public BlockCollection() {
         blockList = new ArrayList<>();
         pointList = new ArrayList<>();
         // removedSegments = new ArrayList<>();
@@ -24,7 +23,14 @@ public class BlockCollection {
     // EFFECTS: Adds the curPiece to the fixedBlocks
     private void fixBlock(Block block) {
         blockList.add(block);
-        Collections.addAll(pointList, block.getOrientation());
+        Point[] curOrientation = block.getOrientation();
+
+        for (Point s : curOrientation) {
+            int finalX = block.getAnchorPoint().x + s.x;
+            int finalY = block.getAnchorPoint().y - s.y;
+            pointList.add(new Point(finalX, finalY));
+        }
+
         score += 10;
     }
 

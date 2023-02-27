@@ -6,7 +6,7 @@ import java.awt.*;
 
 public class BlockVoid extends Block {
 
-    public void blockVoid() {
+    public BlockVoid() {
         setCoordStates(new Point[][] {
                 {new Point(0,0), new Point(0,0), new Point(0,0), new Point(0,0)},
                 {new Point(0,0), new Point(0,0), new Point(0,0), new Point(0,0)},
@@ -15,5 +15,7 @@ public class BlockVoid extends Block {
         });
         setColor(new Color(0, 0, 0));
         setOrientation(0);
+        setRotationState(0);
+        setRotationState(0);
     }
 }

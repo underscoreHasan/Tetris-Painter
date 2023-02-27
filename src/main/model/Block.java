@@ -1,6 +1,5 @@
 package model;
 
-import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 
 public abstract class Block {
@@ -9,45 +8,44 @@ public abstract class Block {
     private Color color;
     private Point[] orientation;
     private Point anchorPoint;
-    private int coordX = anchorPoint.x;
-    private int coordY = anchorPoint.y;
     private int rotationState;
 
-    // REQUIRES: checkCollision() is false
-    // MODIFIES: this
-    // EFFECTS: drops the block down 1 line by altering the anchorpoint
-    public void downOneLine() {
-        setAnchorPoint(coordX, coordY + 1);
+    // REQUIRES: anchorPoint.x > 0 && anchorPoint.y > 0
+    // EFFECTS: returns the coordinates of anchorPoint dropped by 1 line
+    public Point downOneLine() {
+        return new Point(anchorPoint.x, anchorPoint.y + 1);
     }
 
-    // REQUIRES: checkCollision() is false
-    // MODIFIES: this
-    // EFFECTS: moves the block 1 to the right
-    public void moveRight() {
-        setAnchorPoint(coordX + 1, coordY);
+    // REQUIRES: anchorPoint.x > 0 && anchorPoint.y > 0
+    // EFFECTS: returns the coordinates of anchorPoint moved right 1 column
+    public Point moveRight() {
+        return new Point(anchorPoint.x + 1, anchorPoint.y);
     }
 
-    // REQUIRES: checkCollision() is false
-    // MODIFIES: this
-    // EFFECTS: moves the block one to the left
-    public void moveLeft() {
-        setAnchorPoint(coordX - 1, coordY);
+    // REQUIRES: anchorPoint.x > 0 && anchorPoint.y > 0
+    // EFFECTS: returns the coordinates of anchorPoint moved left 1 column
+    public Point moveLeft() {
+        return new Point(anchorPoint.x - 1, anchorPoint.y);
     }
 
-    // REQUIRES: checkCollision() is false
-    // MODIFIES: this
-    // EFFECTS: rotates the block anticlockwise around the anchor point
-    public void rotateLeft() {
-        rotationState++;
-        setOrientation(Math.abs(rotationState % 4));
+    // REQUIRES: anchorPoint.x > 0 && anchorPoint.y > 0
+    // EFFECTS: returns the orientation of the block if rotated anticlockwise 90° around the anchor point
+    public Point[] rotateLeft() {
+        if (rotationState - 1 < 0) {
+            return this.coordStates[3];
+        } else {
+            return this.coordStates[rotationState - 1];
+        }
     }
 
-    // REQUIRES: checkCollision() is false
-    // MODIFIES: this
-    // EFFECTS: rotates the block clockwise around the anchor point
-    public void rotateRight() {
-        rotationState--;
-        setOrientation(Math.abs(rotationState % 4));
+    // REQUIRES: anchorPoint.x > 0 && anchorPoint.y > 0
+    // EFFECTS: returns the orientation of the block if rotated clockwise 90° around the anchor point
+    public Point[] rotateRight() {
+        if (rotationState + 1 > 3) {
+            return this.coordStates[0];
+        } else {
+            return this.coordStates[rotationState + 1];
+        }
     }
 
     public Point getAnchorPoint() {
@@ -78,8 +76,42 @@ public abstract class Block {
         return this.orientation;
     }
 
+    // REQUIRES: 0 <= i <= 3
+    // MODIFIES: this
+    // EFFECTS: Copies the array of Points at index i in this.coordStates into this.orientation
     public void setOrientation(int i) {
-        System.arraycopy(this.coordStates[i], 0, this.orientation, 0,4);
-        rotationState = i;
+        System.arraycopy(this.coordStates[i], 0, this.orientation, 0,4);;
+    }
+
+    public int getRotationState() {
+        return rotationState;
+    }
+
+    public void setRotationState(int rotationState) {
+        this.rotationState = rotationState;
+    }
+
+    // MODIFIES: this
+    // EFFECTS: Increments the rotationState by 1
+    public void incRotationState() {
+        int newState = rotationState + 1;
+
+        if (newState > 3) {
+            rotationState = 0;
+        } else {
+            rotationState = newState;
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: Decrements the rotationState by 1
+    public void decRotationState() {
+        int newState = rotationState - 1;
+
+        if (newState < 0) {
+            rotationState = 3;
+        } else {
+            rotationState = newState;
+        }
     }
 }

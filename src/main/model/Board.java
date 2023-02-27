@@ -11,6 +11,7 @@ public class Board {
     private Block curBlock;
     private int[][] positions;
     private BlockCollection fixedBlocks;
+    private boolean canFall = false;
 
     private static final int BOARD_HEIGHT = 20;
     private static final int BOARD_WIDTH = 10;
@@ -21,16 +22,45 @@ public class Board {
         fixedBlocks = new BlockCollection();
     }
 
-    //generate the next coordinates the block will be at
-    private boolean genNextCoordinates() {
-        //copy the curblock into a new object
-        //apply move
-        //get new coordinates
-        //pass each pair to check collision
-        //if false do not allow move
-        //if true curblock = new object
-        return false; //stub
+    //used by ui, pass block.movex() to it
+    //test next coordinates the block will be at. True if valid, false if invalid
+    private boolean tryNextCoordinates(Point newAnchorPoint) {
+        Point[] curOrientation = curBlock.getOrientation();
+
+        for (Point p : curOrientation) {
+            int newX = newAnchorPoint.x + p.x;
+            int newY = newAnchorPoint.y - p.y;
+
+            if (checkCollision(new Point(newX, newY))) {
+                return false;
+            }
+        }
+        curBlock.setAnchorPoint(newAnchorPoint.x, newAnchorPoint.y);
+        return true;
     }
+
+    private boolean tryNextCoordinates(Point[] newCoords, String dir) {
+        for (Point p : newCoords) {
+            if (checkCollision(p)) {
+                return false;
+            }
+        }
+
+        if (dir.equals('l')) {
+            curBlock.decRotationState();
+        } else if (dir.equals('r')) {
+            curBlock.incRotationState();
+        }
+        return true;
+    }
+
+    //apply .move()
+    //get the new coordinates of the anchorpoint
+    //calculate coordinates of all the segments
+    //pass each pair to check collision
+    //if false for all the new coords set new anchorpoint to be curBlocks anchorpoint
+    //if true for any of the new coords retain old anchorpoint
+    //stub
 
     //check if curBlock will hit the given x,y Coords (use pointsList from BlockCollection) once the proposed
     // move is completed

@@ -6,7 +6,7 @@ import java.awt.*;
 
 public class BlockZ extends Block {
 
-    public void blockT() {
+    public BlockZ() {
         setCoordStates(new Point[][] {
                 {new Point(0,-1), new Point(0,0), new Point(1,0), new Point(1,1)},
                 {new Point(1,-1), new Point(0,-1), new Point(0,0), new Point(-1,0)},
@@ -15,5 +15,6 @@ public class BlockZ extends Block {
         });
         setColor(new Color(255, 0, 0));
         setOrientation(0);
+        setRotationState(0);
     }
 }

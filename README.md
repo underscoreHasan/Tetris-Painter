@@ -19,9 +19,12 @@
 
 ## User Stories:
 
-- As a user, I want to be able to control the movement and orientation of Tetris blocks.
+- As a user, I want to be able to control the movement of Tetris blocks.
+- As a user, I want to be able to control the orientation of Tetris blocks.
+- As a user, I want random Tetris blocks to be generated.
+- As a user, I want to be able to see what the upcoming Tetris block is.
 - As a user, I want to be able to view what my current score is.
-- As a user, I want to be able to view what the high score is.
-- As a user, I want to be able to see what the upcoming block is.
-- As a user, I want to be able to place a floating block on a collection of placed blocks at the bottom of the screen.
 - As a user, I want to be able to control the game using my keyboard.
+- As a user, I want to be able to view what the high score is.
+- As a user, I want to be able to place a block on a collection of placed blocks.
+- As a user, I want to see a collection of placed blocks at the bottom of the screen.
