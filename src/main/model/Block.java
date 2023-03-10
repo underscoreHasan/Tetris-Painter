@@ -40,9 +40,11 @@ public abstract class Block {
     // EFFECTS: rotates the block anticlockwise around anchorPoint
     public void rotateLeft() {
         if (rotationState - 1 < 0) {
+            setRotationState(3);
             setOrientation(3);
         } else {
-            setOrientation(rotationState - 1);
+            setRotationState(rotationState - 1);
+            setOrientation(rotationState); // since rotationState has already been updated in the previous step
         }
     }
 
@@ -51,9 +53,11 @@ public abstract class Block {
     // EFFECTS: rotates the block clockwise around anchorPoint
     public void rotateRight() {
         if (rotationState + 1 > 3) {
+            setRotationState(0);
             setOrientation(0);
         } else {
-            setOrientation(rotationState + 1);
+            setRotationState(rotationState + 1);
+            setOrientation(rotationState); // since rotationState has already been updated in the previous step
         }
     }
 

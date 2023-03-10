@@ -1,24 +1,24 @@
 package ui;
 
 import model.Block;
-import model.BlockCollection;
+import model.BlockHeap;
 import model.Board;
 import model.shapedblocks.*;
 
 import java.awt.*;
-import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
 // Tetris Application
 public class TetrisApp {
-    private Board board;
     private Block controlBlock;
-    private BlockCollection fixedBlocks;
+    private BlockHeap fixedBlocks;
     private Scanner input;
+    private String curBlockType;
 
-    //private static final List<String> POSSIBLE_BLOCKS = List.of("I", "J", "L", "O", "S", "T", "Z");
     private static final String[] POSSIBLE_BLOCKS = {"I", "J", "L", "O", "S", "T", "Z"};
+    private static final int BOARD_HEIGHT = 20;
+    private static final int BOARD_WIDTH = 10;
 
     // EFFECTS: runs the Tetris Game.
     public TetrisApp() {
@@ -45,24 +45,22 @@ public class TetrisApp {
             if (move.equals("quit")) {
                 continuePlaying = false;
             } else {
+                doMove(move);
                 printBlockType();
                 printControlBlockCoords();
-                doMove(move);
                 printScore();
             }
         }
 
-        System.out.println("\n Game Over. Your score was: " + board.getFixedBlocks().getScore() + ".");
+        System.out.println("\n Game Over. Your score was: " + fixedBlocks.getScore() + ".");
     }
 
 
     // MODIFIES: this
     // EFFECTS: initializes a Board object, controlBlock, fixedBlocks and generates a new random Block
     private void init() {
-        board = new Board();
         newBlock();
-        controlBlock = board.getCurBlock();
-        fixedBlocks = board.getFixedBlocks();
+        fixedBlocks = new BlockHeap();
         input = new Scanner(System.in);
         input.useDelimiter("\n");
     }
@@ -97,10 +95,7 @@ public class TetrisApp {
         } else if (move.equals("place")) {
             fixedBlocks.fixBlock(controlBlock);
             newBlock();
-            controlBlock = board.getCurBlock();
             System.out.println("\nNew block generated!");
-            printBlockType();
-            printControlBlockCoords();
         } else {
             System.out.println("\nChosen move is not in the list of moves. Try again.");
         }
@@ -140,18 +135,17 @@ public class TetrisApp {
                 break;
         }
 
-        controlBlock.setAnchorPoint(Board.getBoardWidth() / 2, 2);
+        controlBlock.setAnchorPoint(BOARD_WIDTH / 2, 2);
 
-        board.setCurBlock(controlBlock);
-        board.setCurBlockType(blockType);
+        curBlockType = blockType;
     }
 
     private void printBlockType() {
-        System.out.println("\nThe block is " + board.getCurBlockType() + "-shaped.\n");
+        System.out.println("\nThe block is " + curBlockType + "-shaped.\n");
     }
 
     private void printScore() {
-        System.out.println("\nCurrent Score: " + board.getFixedBlocks().getScore());
+        System.out.println("\nCurrent Score: " + fixedBlocks.getScore());
     }
 
     private void printControlBlockCoords() {

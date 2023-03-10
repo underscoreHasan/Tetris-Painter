@@ -1,18 +1,12 @@
 package model;
 
-import model.shapedblocks.*;
-
-import java.awt.*;
-import java.util.List;
-import java.util.Random;
-
 // A game board that contains fixed pieces (BlockCollection fixedBlocks) and a current,
 // controllable piece (Block curBlock). The Board class provides getter and setter methods
 // that allow a TetrisApp to control the curBlock and add it to fixedBlocks if needed.
 public class Board {
 
     private Block curBlock;
-    private BlockCollection fixedBlocks;
+    private BlockHeap fixedBlocks;
     private String curBlockType;
 
     private static final int BOARD_HEIGHT = 20;
@@ -22,7 +16,7 @@ public class Board {
     // MODIFIES:
     // EFFECTS:
     public Board() {
-        fixedBlocks = new BlockCollection();
+        fixedBlocks = new BlockHeap();
     }
 
     public Block getCurBlock() {
@@ -33,7 +27,7 @@ public class Board {
         this.curBlock = curBlock;
     }
 
-    public BlockCollection getFixedBlocks() {
+    public BlockHeap getFixedBlocks() {
         return fixedBlocks;
     }
 
