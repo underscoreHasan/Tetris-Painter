@@ -22,12 +22,11 @@
 - As a user, I want to be able to control the movement of Tetris blocks.
 - As a user, I want to be able to control the orientation of Tetris blocks.
 - As a user, I want random Tetris blocks to be generated.
-- As a user, I want to be able to see what the upcoming Tetris block is.
 - As a user, I want to be able to view what my current score is.
 - As a user, I want to be able to control the game using my keyboard.
-- As a user, I want to be able to view what the high score is.
 - As a user, I want to be able to place a block on a collection of placed blocks.
-- As a user, I want to see a collection of placed blocks at the bottom of the screen.
+- As a user, I want to be able to save my to-do list to file (if I so choose)
+- As a user, I want to be able to be able to load my to-do list from file (if I so choose)
 
 ## Attributions:
 - The UI in this project draws inspiration from the implementation of the UI in TellerApp.
