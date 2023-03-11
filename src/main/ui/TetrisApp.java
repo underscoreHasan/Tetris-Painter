@@ -2,7 +2,6 @@ package ui;
 
 import model.Block;
 import model.BlockHeap;
-import model.Board;
 import model.shapedblocks.*;
 
 import java.awt.*;
