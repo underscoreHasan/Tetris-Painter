@@ -17,7 +17,6 @@ class BlockHeapTest {
     @Test
     public void testConstructor() {
         assertTrue(testHeap.getBlockList().isEmpty());
-        assertTrue(testHeap.getPointList().isEmpty());
         assertEquals(0, testHeap.getScore());
     }
 

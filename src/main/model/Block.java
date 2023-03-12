@@ -1,18 +1,22 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.awt.*;
 
 // The abstract class that represents all the generic information and behaviour of a Block. This can be
 // considered a "shapeless" block that contains information such as color, it's central point(anchorPoint),
 // it's color, a counter for its orientation(rotationState), etc. while specialized information such
 // as the coordinates that define a Block's shape lives in the inherited classes for each shapedBlock.
-public abstract class Block {
+public abstract class Block implements Writable {
 
     private Point[][] coordStates;
     private Color color;
     private Point[] orientation = new Point[4];
     private Point anchorPoint = new Point();
     private int rotationState;
+    private String blockType;
 
     // REQUIRES: anchorPoint.x > 0 && anchorPoint.y > 0
     // MODIFIES: this
@@ -61,6 +65,17 @@ public abstract class Block {
         }
     }
 
+    // EFFECTS: returns this as JSON object
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("anchorPointX", (int) anchorPoint.getX());
+        json.put("anchorPointY", (int) anchorPoint.getY());
+        json.put("rotationState", rotationState);
+        json.put("blockType", blockType);
+        return json;
+    }
+
     public Point getAnchorPoint() {
         return anchorPoint;
     }
@@ -102,5 +117,13 @@ public abstract class Block {
 
     public void setRotationState(int rotationState) {
         this.rotationState = rotationState;
+    }
+
+    public String getBlockType() {
+        return blockType;
+    }
+
+    public void setBlockType(String blockType) {
+        this.blockType = blockType;
     }
 }

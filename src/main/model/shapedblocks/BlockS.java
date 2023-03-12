@@ -15,5 +15,6 @@ public class BlockS extends Block {
         setColor(new Color(0, 255, 0));
         setOrientation(0);
         setRotationState(0);
+        setBlockType("S");
     }
 }

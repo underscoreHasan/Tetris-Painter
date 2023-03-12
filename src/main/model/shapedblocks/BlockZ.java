@@ -16,5 +16,6 @@ public class BlockZ extends Block {
         setColor(new Color(255, 0, 0));
         setOrientation(0);
         setRotationState(0);
+        setBlockType("Z");
     }
 }

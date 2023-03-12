@@ -16,5 +16,6 @@ public class BlockO extends Block {
         setColor(new Color(255, 255, 0));
         setOrientation(0);
         setRotationState(0);
+        setBlockType("O");
     }
 }

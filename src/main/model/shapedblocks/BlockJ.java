@@ -16,5 +16,6 @@ public class BlockJ extends Block {
         setColor(new Color(0, 0, 255));
         setOrientation(0);
         setRotationState(0);
+        setBlockType("J");
     }
 }
