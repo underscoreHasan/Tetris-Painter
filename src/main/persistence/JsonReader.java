@@ -115,7 +115,6 @@ public class JsonReader {
                 break;
             case "Z":
                 block = new BlockZ();
-                break;
         }
 
         block.setAnchorPoint(anchorPointX, anchorPointY);
