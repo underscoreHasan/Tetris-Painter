@@ -118,10 +118,9 @@ public class JsonReader {
                 break;
         }
 
-        if (block != null) {
-            block.setAnchorPoint(anchorPointX, anchorPointY);
-            block.setRotationState(rotationState);
-        }
+        block.setAnchorPoint(anchorPointX, anchorPointY);
+        block.setRotationState(rotationState);
+
         return block;
     }
 }
