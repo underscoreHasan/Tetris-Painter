@@ -17,7 +17,6 @@ public class TetrisApp {
     private Block controlBlock;
     private BlockHeap fixedBlocks;
     private Scanner input;
-    private String curBlockType;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
 
@@ -92,6 +91,7 @@ public class TetrisApp {
 
     // MODIFIES: this
     // EFFECTS: processes user selected move
+    @SuppressWarnings("methodlength")
     private void doMove(String move) {
         if (move.equals("down")) {
             controlBlock.downOneLine();
@@ -112,6 +112,7 @@ public class TetrisApp {
         } else if (move.equals("save")) {
             saveFixedBlocks();
         } else if (move.equals("load")) {
+            loadControlBlock();
             loadFixedBlocks();
         } else {
             System.out.println("\nChosen move is not in the list of moves. Try again.");
@@ -153,15 +154,13 @@ public class TetrisApp {
         }
 
         controlBlock.setAnchorPoint(BOARD_WIDTH / 2, 2);
-
-        curBlockType = blockType;
     }
 
     // EFFECTS: saves the fixedBlocks to file
     private void saveFixedBlocks() {
         try {
             jsonWriter.open();
-            jsonWriter.write(fixedBlocks);
+            jsonWriter.write(fixedBlocks, controlBlock);
             jsonWriter.close();
             System.out.println("Saved all placed blocks to " + JSON_STORE);
         } catch (FileNotFoundException e) {
@@ -171,9 +170,20 @@ public class TetrisApp {
 
     // MODIFIES: this
     // EFFECTS: loads fixedBlocks from file
+    private void loadControlBlock() {
+        try {
+            controlBlock = jsonReader.readBlock();
+            System.out.println("Loaded control block from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads fixedBlocks from file
     private void loadFixedBlocks() {
         try {
-            fixedBlocks = jsonReader.read();
+            fixedBlocks = jsonReader.readBlockHeap();
             System.out.println("Loaded placed blocks from " + JSON_STORE);
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);
@@ -200,7 +210,7 @@ public class TetrisApp {
     }
 
     private void printCurBlockType() {
-        System.out.println("\nThe current block is " + curBlockType + "-Shaped. ");
+        System.out.println("\nThe current block is " + controlBlock.getBlockType() + "-Shaped. ");
     }
 
     private void printScore() {

@@ -1,5 +1,6 @@
 package persistence;
 
+import model.Block;
 import model.BlockHeap;
 import org.json.JSONObject;
 
@@ -26,8 +27,10 @@ public class JsonWriter {
 
     // MODIFIES: this
     // EFFECTS: writes JSON representation of fixedBlocks to file
-    public void write(BlockHeap fixedBlocks) {
+    public void write(BlockHeap fixedBlocks, Block controlBlock) {
         JSONObject json = fixedBlocks.toJson();
+        JSONObject jsonControlBlock = controlBlock.toJson();
+        json.put("controlBlock", jsonControlBlock);
         saveToFile(json.toString(TAB));
     }
 

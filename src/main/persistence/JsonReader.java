@@ -22,9 +22,17 @@ public class JsonReader {
         this.source = source;
     }
 
+    // EFFECTS: reads Block from file and returns it;
+    // throws IOException if an error occurs reading data from file
+    public Block readBlock() throws IOException {
+        String jsonData = readFile(source);
+        JSONObject jsonObject = new JSONObject(jsonData);
+        return parseBlock(jsonObject);
+    }
+
     // EFFECTS: reads BlockHeap from file and returns it;
     // throws IOException if an error occurs reading data from file
-    public BlockHeap read() throws IOException {
+    public BlockHeap readBlockHeap() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
         return parseBlockHeap(jsonObject);
@@ -39,6 +47,17 @@ public class JsonReader {
         }
 
         return contentBuilder.toString();
+    }
+
+    // EFFECTS: parses Block from JSON object and returns it
+    private Block parseBlock(JSONObject jsonObject) {
+        JSONObject jsonControlBlock = jsonObject.getJSONObject("controlBlock");
+        int anchorPointX = jsonControlBlock.getInt("anchorPointX");
+        int anchorPointY = jsonControlBlock.getInt("anchorPointY");
+        int rotationState = jsonControlBlock.getInt("rotationState");
+        String blockType = jsonControlBlock.getString("blockType");
+        Block block = constructBlock(anchorPointX, anchorPointY, rotationState, blockType);
+        return block;
     }
 
     // EFFECTS: parses BlockHeap from JSON object and returns it
@@ -75,36 +94,36 @@ public class JsonReader {
     // EFFECTS: constructs a block and sets its properties to those passed as the parameters
     @SuppressWarnings("methodlength")
     private Block constructBlock(int anchorPointX, int anchorPointY, int rotationState, String blockType) {
-        Block fixedBlock = null;
+        Block block = null;
 
         switch (blockType) {
             case "I":
-                fixedBlock = new BlockI();
+                block = new BlockI();
                 break;
             case "J":
-                fixedBlock = new BlockJ();
+                block = new BlockJ();
                 break;
             case "L":
-                fixedBlock = new BlockL();
+                block = new BlockL();
                 break;
             case "O":
-                fixedBlock = new BlockO();
+                block = new BlockO();
                 break;
             case "S":
-                fixedBlock = new BlockS();
+                block = new BlockS();
                 break;
             case "T":
-                fixedBlock = new BlockT();
+                block = new BlockT();
                 break;
             case "Z":
-                fixedBlock = new BlockZ();
+                block = new BlockZ();
                 break;
         }
 
-        assert fixedBlock != null;
-        fixedBlock.setAnchorPoint(anchorPointX, anchorPointY);
-        fixedBlock.setRotationState(rotationState);
+        assert block != null;
+        block.setAnchorPoint(anchorPointX, anchorPointY);
+        block.setRotationState(rotationState);
 
-        return fixedBlock;
+        return block;
     }
 }

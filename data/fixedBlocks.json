@@ -1,23 +1,10 @@
 {
-    "score": 30,
-    "blockList": [
-        {
-            "rotationState": 0,
-            "blockType": "L",
-            "anchorPointY": 2,
-            "anchorPointX": 5
-        },
-        {
-            "rotationState": 0,
-            "blockType": "J",
-            "anchorPointY": 2,
-            "anchorPointX": 5
-        },
-        {
-            "rotationState": 0,
-            "blockType": "Z",
-            "anchorPointY": 2,
-            "anchorPointX": 5
-        }
-    ]
+    "score": 0,
+    "blockList": [],
+    "controlBlock": {
+        "rotationState": 0,
+        "blockType": "L",
+        "anchorPointY": 2,
+        "anchorPointX": 5
+    }
 }
