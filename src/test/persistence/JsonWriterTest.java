@@ -26,18 +26,18 @@ public class JsonWriterTest extends JsonTest {
     }
 
     @Test
-    void testGeneralGameStateNoFixedBlocks() {
+    void testWriterGeneralGameStateNoFixedBlocks() {
         try {
             Block controlBlock = new BlockJ();
             controlBlock.setAnchorPoint(5, 2);
             BlockHeap fixedBlocks = new BlockHeap();
 
-            JsonWriter writer = new JsonWriter("./data/testGeneralGameState.json");
+            JsonWriter writer = new JsonWriter("./data/testGeneralGameStateNoFixedBlocks.json");
             writer.open();
             writer.write(fixedBlocks, controlBlock);
             writer.close();
 
-            JsonReader reader = new JsonReader("./data/testGeneralGameState.json");
+            JsonReader reader = new JsonReader("./data/testGeneralGameStateNoFixedBlocks.json");
             Block readControlBlock = reader.readBlock();
             BlockHeap readFixedBlocks = reader.readBlockHeap();
             int score = readFixedBlocks.getScore();
@@ -52,7 +52,7 @@ public class JsonWriterTest extends JsonTest {
     }
 
     @Test
-    void testGeneralGameStateAllBlockTypesFixed() {
+    void testWriterGeneralGameStateAllBlockTypesFixed() {
         try {
             Block controlBlock = new BlockZ();
             controlBlock.setAnchorPoint(5, 2);
@@ -107,7 +107,7 @@ public class JsonWriterTest extends JsonTest {
     }
 
     @Test
-    void testGeneralGameState() {
+    void testWriterGeneralGameState() {
         try {
             Block controlBlock = new BlockT();
             controlBlock.setAnchorPoint(2, 4);

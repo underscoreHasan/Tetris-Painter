@@ -65,8 +65,4 @@ public class BlockHeap implements Writable {
     public int getScore() {
         return score;
     }
-
-    public void setScore(int score) {
-        this.score = score;
-    }
 }
