@@ -113,7 +113,7 @@ public class JsonReader {
             case "T":
                 block = new BlockT();
                 break;
-            case "Z":
+            default:
                 block = new BlockZ();
         }
 
