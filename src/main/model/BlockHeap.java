@@ -43,7 +43,6 @@ public class BlockHeap implements Writable {
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
-        json.put("score", score);
         json.put("blockList", blocksToJson());
         return json;
     }

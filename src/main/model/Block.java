@@ -69,8 +69,8 @@ public abstract class Block implements Writable {
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
-        json.put("anchorPointX", (int) anchorPoint.getX());
-        json.put("anchorPointY", (int) anchorPoint.getY());
+        json.put("anchorPointX", anchorPoint.x);
+        json.put("anchorPointY", anchorPoint.y);
         json.put("rotationState", rotationState);
         json.put("blockType", blockType);
         return json;

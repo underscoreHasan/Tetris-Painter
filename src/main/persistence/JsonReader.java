@@ -63,8 +63,6 @@ public class JsonReader {
     // EFFECTS: parses BlockHeap from JSON object and returns it
     private BlockHeap parseBlockHeap(JSONObject jsonObject) {
         BlockHeap fixedBlocks = new BlockHeap();
-        int score = jsonObject.getInt("score");
-        fixedBlocks.setScore(score);
         addBlocks(fixedBlocks, jsonObject);
         return fixedBlocks;
     }
