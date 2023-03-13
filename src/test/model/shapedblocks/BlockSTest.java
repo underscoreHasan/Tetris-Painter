@@ -33,6 +33,7 @@ class BlockSTest {
         assertEquals(BLOCK_S_COLOR, testBlockS.getColor());
         assertTrue(Arrays.deepEquals(CORRECT_COORD_STATES[0], testBlockS.getCoordStates()[0]));
         assertEquals(0, testBlockS.getRotationState());
+        assertEquals("S", testBlockS.getBlockType());
     }
 
     @Test
