@@ -9,6 +9,7 @@ import java.awt.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+// Test class for the BlockS class.
 class BlockSTest {
 
     private Block testBlockS;

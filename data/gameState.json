@@ -2,33 +2,27 @@
     "blockList": [
         {
             "rotationState": 0,
-            "blockType": "Z",
-            "anchorPointY": 3,
+            "blockType": "J",
+            "anchorPointY": 2,
             "anchorPointX": 5
-        },
-        {
-            "rotationState": 1,
-            "blockType": "O",
-            "anchorPointY": 6,
-            "anchorPointX": 5
-        },
-        {
-            "rotationState": 2,
-            "blockType": "L",
-            "anchorPointY": 5,
-            "anchorPointX": 8
         },
         {
             "rotationState": 0,
-            "blockType": "O",
+            "blockType": "J",
             "anchorPointY": 2,
-            "anchorPointX": 2
+            "anchorPointX": 5
+        },
+        {
+            "rotationState": 0,
+            "blockType": "Z",
+            "anchorPointY": 2,
+            "anchorPointX": 5
         }
     ],
     "controlBlock": {
-        "rotationState": 3,
-        "blockType": "T",
-        "anchorPointY": 4,
-        "anchorPointX": 2
+        "rotationState": 0,
+        "blockType": "S",
+        "anchorPointY": 5,
+        "anchorPointX": 5
     }
 }

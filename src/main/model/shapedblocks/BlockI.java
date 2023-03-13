@@ -4,8 +4,10 @@ import model.Block;
 
 import java.awt.*;
 
+// Class that represents specific behavior and properties of an I-Shaped block.
 public class BlockI extends Block {
 
+    // EFFECTS: constructs an I-Shaped Block
     public BlockI() {
         setCoordStates(new Point[][] {
                 {new Point(0,-1), new Point(0,0), new Point(0,1), new Point(0,2)},

@@ -9,22 +9,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 // A BlockCollection is the representation of the Tetris Blocks that have been fixed in place. It holds
-// a List<Block> that contains all the blocks fixed so far, and a List<Point> that contains all the coordinates
-// in that the List<Block> occupies in a game board.
+// a List<Block> that contains all the blocks fixed so far, and the score so far.
 public class BlockHeap implements Writable {
     private List<Block> blockList;
     private int score;
 
-    // MODIFIES: this
-    // EFFECTS: Constructs an empty collection of blocks with an empty blockList,
-    //          pointList and no removedSegments
+    // EFFECTS: Constructs an empty collection of blocks with an empty blockList and a score of 0.
     public BlockHeap() {
         blockList = new ArrayList<>();
         score = 0;
-        // removedSegments = new ArrayList<>();
     }
 
-    // REQUIRES: block.anchorPoint.x > 0 && block.anchorPoint.y > 0
+    // REQUIRES: block.anchorPoint.y > 0
     // MODIFIES: this
     // EFFECTS: Adds the curPiece to the fixedBlocks
     public void fixBlock(Block block) {

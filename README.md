@@ -25,8 +25,9 @@
 - As a user, I want to be able to view what my current score is.
 - As a user, I want to be able to control the game using my keyboard.
 - As a user, I want to be able to place a block on a collection of placed blocks.
-- As a user, I want to be able to save my to-do list to file (if I so choose)
-- As a user, I want to be able to be able to load my to-do list from file (if I so choose)
+- As a user, I want to be able to save the state of my game to file (if I so choose)
+- As a user, I want to be able to be able to load the saved state of my game from file (if I so choose)
 
 ## Attributions:
 - The UI in this project draws inspiration from the implementation of the UI in TellerApp.
+- The JsonReader and JsonWriter classes in this project draw inspiration from the implementation of the JsonReader and JsonWriter in JsonSerializationDemo.

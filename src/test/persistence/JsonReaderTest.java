@@ -10,6 +10,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+// Test class for the JsonReader class.
 class JsonReaderTest extends JsonTest{
 
     @Test

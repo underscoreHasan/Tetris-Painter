@@ -119,14 +119,13 @@ public class TetrisApp {
         }
     }
 
-    // REQUIRES: fixedBlocks.fixBlock(controlBlock) must have already executed XOR board.getCurBlock() returns null
-    // MODIFIES: this, board.curBlock, board.curBlockType
-    // EFFECTS: sets curBlock to be one of 7 random Blocks, places this curBlock at
-    //          the starting position x = Board.getBoardWidth() / 2, y = 2
+    // REQUIRES: fixedBlocks.fixBlock(controlBlock) must have already executed
+    // MODIFIES: this, controlBlock
+    // EFFECTS: sets controlBlock to be one of 7 random Blocks, places this curBlock at
+    //          the starting position x = BOARD_WIDTH / 2, y = 2
     @SuppressWarnings("methodlength")
     public void newBlock() {
         Random rand = new Random();
-        // String blockType = POSSIBLE_BLOCKS.get(rand.nextInt(POSSIBLE_BLOCKS.size()));
         String blockType = POSSIBLE_BLOCKS[rand.nextInt(POSSIBLE_BLOCKS.length)];
 
         switch (blockType) {
@@ -190,6 +189,7 @@ public class TetrisApp {
         }
     }
 
+    // EFFECTS: displays all fixedBlocks along with their coordinates
     private void printFixedBlocks() {
         System.out.println();
         System.out.println("The placed blocks are:");
@@ -209,15 +209,18 @@ public class TetrisApp {
         System.out.println();
     }
 
+    // EFFECTS: displays the shape of the controlBlock
     private void printCurBlockType() {
         System.out.println("\nThe current block is " + controlBlock.getBlockType() + "-Shaped. ");
     }
 
+    // EFFECTS: displays the current score
     private void printScore() {
         System.out.println();
         System.out.println("\nCurrent Score: " + fixedBlocks.getScore());
     }
 
+    // EFFECTS: displays the coordinates of the controlBlock
     private void printControlBlockCoords() {
 
         for (Point p : controlBlock.getOrientation()) {
