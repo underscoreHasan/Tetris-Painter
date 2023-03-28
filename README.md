@@ -1,16 +1,16 @@
 # Hasan Noor's Personal Project
-## Tetris
+## Tetris Painter
 
 - What will the application do?
 
-    - The application will provide a graphical environment to play a game that can be controlled by the users keyboard.
-  The game will be rendered simply and will follow the rules of Tetris. To save a state of a game, the user would just
-  have to pause and exit the game. Between all save states a high score will also be tracked.
+    - The application will provide a graphical environment to paint in that can be controlled by the users keyboard.
+  The app will be rendered simply and will follow the rules of a Tetris board. To save a state of a painting, the user
+  would have to click a save button the game. A score will also be tracked.
 
 
 - Who will use it?
 
-    - The application could be used by **anyone** who wants to play the game and has a computer that is able to render it.
+    - The application could be used by **anyone** who wants to use the painter and has a computer that is able to render it.
 
 
 - Why is this project of interest to you?
@@ -23,10 +23,10 @@
 - As a user, I want to be able to control the orientation of Tetris blocks.
 - As a user, I want random Tetris blocks to be generated.
 - As a user, I want to be able to view what my current score is.
-- As a user, I want to be able to control the game using my keyboard.
+- As a user, I want to be able to control the painter using my keyboard.
 - As a user, I want to be able to place a block on a collection of placed blocks.
-- As a user, I want to be able to save the state of my game to file (if I so choose)
-- As a user, I want to be able to be able to load the saved state of my game from file (if I so choose)
+- As a user, I want to be able to save the state of my painting to file (if I so choose)
+- As a user, I want to be able to be able to load the saved state of my painting from file (if I so choose)
 
 ## Attributions:
 - The UI in this project draws inspiration from the implementation of the UI in TellerApp.

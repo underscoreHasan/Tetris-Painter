@@ -3,13 +3,7 @@
         {
             "rotationState": 0,
             "blockType": "J",
-            "anchorPointY": 2,
-            "anchorPointX": 5
-        },
-        {
-            "rotationState": 0,
-            "blockType": "J",
-            "anchorPointY": 2,
+            "anchorPointY": 4,
             "anchorPointX": 5
         },
         {
@@ -21,8 +15,8 @@
     ],
     "controlBlock": {
         "rotationState": 0,
-        "blockType": "S",
-        "anchorPointY": 5,
+        "blockType": "J",
+        "anchorPointY": 2,
         "anchorPointX": 5
     }
 }
