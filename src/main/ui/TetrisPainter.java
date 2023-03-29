@@ -87,6 +87,10 @@ public class TetrisPainter extends JFrame {
                 newBlock();
                 System.out.println("\nNew block generated!");
             }
+
+            gp.repaint();
+            printControlBlockInfo();
+
 //        } else if (move.equals("view")) {
 //            printFixedBlocks();
 //        } else if (move.equals("save")) {
@@ -134,6 +138,21 @@ public class TetrisPainter extends JFrame {
         }
 
         controlBlock.setAnchorPoint(BOARD_WIDTH / 2, 2);
+    }
+
+    // EFFECTS: displays the type and coordinates of the controlBlock
+    private void printControlBlockInfo() {
+
+        System.out.print(controlBlock.getBlockType() + "-Shaped: ");
+
+        for (Point p : controlBlock.getOrientation()) {
+            int newX = controlBlock.getAnchorPoint().x + p.x;
+            int newY = controlBlock.getAnchorPoint().y - p.y;
+
+            System.out.print("[" + newX + "," + newY + "] ");
+        }
+
+        System.out.println();
     }
 
     /*
