@@ -37,6 +37,21 @@ class BlockLTest {
     }
 
     @Test
+    void testUpOneLine() {
+        testBlockL.setAnchorPoint(BOARD_WIDTH / 2, 2);
+        testBlockL.upOneLine();
+        assertEquals(new Point(BOARD_WIDTH / 2, 1),testBlockL.getAnchorPoint());
+    }
+
+    @Test
+    void testUpMultipleLines() {
+        testBlockL.setAnchorPoint(BOARD_WIDTH / 2, 2);
+        testBlockL.upOneLine();
+        testBlockL.upOneLine();
+        assertEquals(new Point(BOARD_WIDTH / 2, 0),testBlockL.getAnchorPoint());
+    }
+
+    @Test
     void testDownOneLine() {
         testBlockL.setAnchorPoint(BOARD_WIDTH / 2, 2);
         testBlockL.downOneLine();

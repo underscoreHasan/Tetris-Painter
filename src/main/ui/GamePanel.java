@@ -3,11 +3,7 @@ package ui;
 import model.Block;
 import model.BlockHeap;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.FontMetrics;
-import java.awt.Graphics;
+import java.awt.*;
 
 import javax.swing.JPanel;
 
@@ -23,7 +19,7 @@ public class GamePanel extends JPanel {
     // effects:  sets size and background colour of panel,
     //           updates this with the game elements to be displayed
     public GamePanel(Block b, BlockHeap loB) {
-        setPreferredSize(new Dimension(TetrisPainter.BOARD_WIDTH, TetrisPainter.BOARD_HEIGHT));
+        setPreferredSize(new Dimension(TetrisPainter.SCREEN_WIDTH, TetrisPainter.SCREEN_HEIGHT));
         this.controlBlock = b;
         this.fixedBlocks = loB;
     }
@@ -58,7 +54,12 @@ public class GamePanel extends JPanel {
     private void drawBlock(Graphics g, Block b) {
         Color savedCol = g.getColor();
         g.setColor(b.getColor());
-        g.fillRect(b.getAnchorPoint().x, b.getAnchorPoint().y, 50, 50);
+        for (Point p : b.getOrientation()) {
+            int newX = b.getAnchorPoint().x + p.x;
+            int newY = b.getAnchorPoint().y - p.y;
+
+            g.fillRect(newX * Block.BLOCK_SIDE, newY * Block.BLOCK_SIDE, Block.BLOCK_SIDE, Block.BLOCK_SIDE);
+        }
         g.setColor(savedCol);
     }
 

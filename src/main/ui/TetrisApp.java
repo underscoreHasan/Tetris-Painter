@@ -22,7 +22,6 @@ public class TetrisApp {
 
     private static final String JSON_STORE = "./data/gameState.json";
     private static final String[] POSSIBLE_BLOCKS = {"I", "J", "L", "O", "S", "T", "Z"};
-    private static final int BOARD_HEIGHT = 20;
     private static final int BOARD_WIDTH = 10;
 
     // EFFECTS: runs the Tetris Game.

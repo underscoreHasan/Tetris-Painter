@@ -18,11 +18,20 @@ public abstract class Block implements Writable {
     private int rotationState;
     private String blockType;
 
+    public static final int BLOCK_SIDE = 25;
+
+    // REQUIRES: anchorPoint.x > 0 && anchorPoint.y > 0
+    // MODIFIES: this
+    // EFFECTS: moves the block up 1 coordinate by altering the anchorPoint
+    public void upOneLine() {
+        setAnchorPoint(anchorPoint.x, anchorPoint.y - 1);
+    }
+
     // REQUIRES: anchorPoint.x > 0 && anchorPoint.y > 0
     // MODIFIES: this
     // EFFECTS: drops the block down 1 coordinate by altering the anchorPoint
     public void downOneLine() {
-        setAnchorPoint(anchorPoint.x, anchorPoint.y + 50);
+        setAnchorPoint(anchorPoint.x, anchorPoint.y + 1);
     }
 
     // REQUIRES: anchorPoint.x > 0 && anchorPoint.y > 0

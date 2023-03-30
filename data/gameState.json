@@ -2,20 +2,20 @@
     "blockList": [
         {
             "rotationState": 0,
-            "blockType": "J",
-            "anchorPointY": 4,
-            "anchorPointX": 5
+            "blockType": "T",
+            "anchorPointY": 3,
+            "anchorPointX": 6
         },
         {
             "rotationState": 0,
-            "blockType": "Z",
+            "blockType": "S",
             "anchorPointY": 2,
-            "anchorPointX": 5
+            "anchorPointX": 3
         }
     ],
     "controlBlock": {
         "rotationState": 0,
-        "blockType": "J",
+        "blockType": "L",
         "anchorPointY": 2,
         "anchorPointX": 5
     }

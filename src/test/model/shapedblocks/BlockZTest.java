@@ -16,7 +16,7 @@ class BlockZTest {
     private static final Point[][] CORRECT_COORD_STATES = new Point [][] {
             {new Point(0,-1), new Point(0,0), new Point(1,0), new Point(1,1)},
             {new Point(1,-1), new Point(0,-1), new Point(0,0), new Point(-1,0)},
-            {new Point(0,-1), new Point(0,0), new Point(-1,0), new Point(-1,-1)},
+            {new Point(0,-1), new Point(0,0), new Point(-1,0), new Point(-1,1)},
             {new Point(-1,1), new Point(0,1), new Point(0,0), new Point(1,0)}};
     private static final Color BLOCK_Z_COLOR = new Color(255, 0, 0);
     private static final int BOARD_HEIGHT = 20;
@@ -34,6 +34,21 @@ class BlockZTest {
         assertTrue(Arrays.deepEquals(CORRECT_COORD_STATES[0], testBlockZ.getCoordStates()[0]));
         assertEquals(0, testBlockZ.getRotationState());
         assertEquals("Z", testBlockZ.getBlockType());
+    }
+
+    @Test
+    void testUpOneLine() {
+        testBlockZ.setAnchorPoint(BOARD_WIDTH / 2, 2);
+        testBlockZ.upOneLine();
+        assertEquals(new Point(BOARD_WIDTH / 2, 1),testBlockZ.getAnchorPoint());
+    }
+
+    @Test
+    void testUpMultipleLines() {
+        testBlockZ.setAnchorPoint(BOARD_WIDTH / 2, 2);
+        testBlockZ.upOneLine();
+        testBlockZ.upOneLine();
+        assertEquals(new Point(BOARD_WIDTH / 2, 0),testBlockZ.getAnchorPoint());
     }
 
     @Test
