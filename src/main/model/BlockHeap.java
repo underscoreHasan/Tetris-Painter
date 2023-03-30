@@ -35,6 +35,12 @@ public class BlockHeap implements Writable {
         score += 10;
     }
 
+    public void removeLatestBlock() {
+        blockList.remove(blockList.size() - 1);
+
+        score -= 10;
+    }
+
     // EFFECTS: returns this.blockList as JSON object
     @Override
     public JSONObject toJson() {

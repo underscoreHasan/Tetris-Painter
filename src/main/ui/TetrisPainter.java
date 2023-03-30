@@ -3,11 +3,15 @@ package ui;
 import model.Block;
 import model.BlockHeap;
 import model.shapedblocks.*;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Random;
 
 public class TetrisPainter extends JFrame {
@@ -16,7 +20,10 @@ public class TetrisPainter extends JFrame {
     private BlockHeap fixedBlocks;
     private GamePanel gp;
     private ScorePanel sp;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
+    private static final String JSON_STORE = "./data/gameState.json";
     private static final String[] POSSIBLE_BLOCKS = {"I", "J", "L", "O", "S", "T", "Z"};
     protected static final int BOARD_WIDTH = 10;
     protected static final int SCREEN_HEIGHT = 600;
@@ -28,6 +35,8 @@ public class TetrisPainter extends JFrame {
         super("Tetris Painter");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setUndecorated(false);
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         newBlock();
         fixedBlocks = new BlockHeap();
         gp = new GamePanel(controlBlock, fixedBlocks);
@@ -51,6 +60,7 @@ public class TetrisPainter extends JFrame {
     /*
      * A key handler to respond to key events
      */
+    @SuppressWarnings("methodlength")
     private class KeyHandler extends KeyAdapter {
         @Override
         public void keyPressed(KeyEvent e) {
@@ -68,21 +78,29 @@ public class TetrisPainter extends JFrame {
                 controlBlock.rotateLeft();
             } else if (keyCode == KeyEvent.VK_V) {
                 controlBlock.rotateRight();
+            } else if (keyCode == KeyEvent.VK_R) {
+                fixedBlocks.removeLatestBlock();
+                sp.update();
             } else if (keyCode == KeyEvent.VK_SPACE) {
                 fixedBlocks.fixBlock(controlBlock);
                 newBlock();
                 gp.setControlBlock(controlBlock);
                 sp.update();
                 System.out.println("\nNew block generated!");
-//            } else if (move.equals("view")) {
-//                printFixedBlocks();
-//            } else if (move.equals("save")) {
-//                saveFixedBlocks();
-//            } else if (move.equals("load")) {
-//                loadControlBlock();
-//                loadFixedBlocks();
-//            } else {
-//                System.out.println("\nChosen move is not in the list of moves. Try again.");
+            } else if (keyCode == KeyEvent.VK_S) {
+                saveFixedBlocks();
+            } else if (keyCode == KeyEvent.VK_L) {
+                loadControlBlock();
+                loadFixedBlocks();
+                remove(gp);
+                remove(sp);
+                gp = new GamePanel(controlBlock, fixedBlocks);
+                sp = new ScorePanel(fixedBlocks);
+                add(gp);
+                add(sp, BorderLayout.NORTH);
+                pack();
+            } else {
+                System.out.println("\nChosen move is not in the list of moves. Try again.");
             }
 
             gp.repaint();
@@ -140,6 +158,40 @@ public class TetrisPainter extends JFrame {
         }
 
         System.out.println();
+    }
+
+    // EFFECTS: saves the fixedBlocks to file
+    private void saveFixedBlocks() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(fixedBlocks, controlBlock);
+            jsonWriter.close();
+            System.out.println("Saved all placed blocks to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads fixedBlocks from file
+    private void loadControlBlock() {
+        try {
+            controlBlock = jsonReader.readBlock();
+            System.out.println("Loaded control block from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads fixedBlocks from file
+    private void loadFixedBlocks() {
+        try {
+            fixedBlocks = jsonReader.readBlockHeap();
+            System.out.println("Loaded placed blocks from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
     }
 
     /*
