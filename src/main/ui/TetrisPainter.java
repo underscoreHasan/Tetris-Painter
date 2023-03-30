@@ -8,6 +8,8 @@ import persistence.JsonWriter;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.FileNotFoundException;
@@ -31,6 +33,7 @@ public class TetrisPainter extends JFrame {
 
     // Constructs main window
     // effects: sets up window in which Space Invaders game will be played
+    @SuppressWarnings("checkstyle:MethodLength")
     public TetrisPainter() {
         super("Tetris Painter");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -43,6 +46,35 @@ public class TetrisPainter extends JFrame {
         sp = new ScorePanel(fixedBlocks);
         add(gp);
         add(sp, BorderLayout.NORTH);
+
+        JButton saveButton = new JButton("Save");
+        saveButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                saveFixedBlocks();
+            }
+        });
+        saveButton.setFocusable(false);
+
+        JButton loadButton = new JButton("Load");
+        loadButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                loadControlBlock();
+                loadFixedBlocks();
+                remove(gp);
+                remove(sp);
+                gp = new GamePanel(controlBlock, fixedBlocks);
+                sp = new ScorePanel(fixedBlocks);
+                add(gp);
+                add(sp, BorderLayout.NORTH);
+                pack();
+                gp.repaint();
+                printControlBlockInfo();
+            }
+        });
+        loadButton.setFocusable(false);
+
+        add(loadButton, BorderLayout.EAST);
+        add(saveButton, BorderLayout.WEST);
         addKeyListener(new KeyHandler());
         pack();
         centreOnScreen();
@@ -87,22 +119,9 @@ public class TetrisPainter extends JFrame {
                 gp.setControlBlock(controlBlock);
                 sp.update();
                 System.out.println("\nNew block generated!");
-            } else if (keyCode == KeyEvent.VK_S) {
-                saveFixedBlocks();
-            } else if (keyCode == KeyEvent.VK_L) {
-                loadControlBlock();
-                loadFixedBlocks();
-                remove(gp);
-                remove(sp);
-                gp = new GamePanel(controlBlock, fixedBlocks);
-                sp = new ScorePanel(fixedBlocks);
-                add(gp);
-                add(sp, BorderLayout.NORTH);
-                pack();
             } else {
                 System.out.println("\nChosen move is not in the list of moves. Try again.");
             }
-
             gp.repaint();
             printControlBlockInfo();
 

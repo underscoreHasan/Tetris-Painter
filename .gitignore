@@ -3,3 +3,4 @@ workspace.xml
 /src/main/ui/Tetris.java
 /src/main/model/shapedblocks/BlockVoid.java
 /src/main/model/Board.java
+/src/main/ui/TetrisApp.java
