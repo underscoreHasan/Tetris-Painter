@@ -16,8 +16,6 @@ import javax.swing.JPanel;
  */
 public class GamePanel extends JPanel {
 
-    private static final String OVER = "Game Over!";
-    private static final String REPLAY = "R to replay";
     private Block controlBlock;
     private BlockHeap fixedBlocks;
 
@@ -35,18 +33,14 @@ public class GamePanel extends JPanel {
         super.paintComponent(g);
 
         drawGame(g);
-//
-//        if (game.isOver()) {
-//            gameOver(g);
-//        }
     }
 
     // Draws the game
     // modifies: g
     // effects:  draws the game onto g
     private void drawGame(Graphics g) {
-        drawBlock(g, controlBlock);
         drawBlocks(g);
+        drawBlock(g, controlBlock);
     }
 
     // Draw the invaders
@@ -68,4 +62,11 @@ public class GamePanel extends JPanel {
         g.setColor(savedCol);
     }
 
+    public void setControlBlock(Block b) {
+        this.controlBlock = b;
+    }
+
+    public Block getControlBlock() {
+        return controlBlock;
+    }
 }

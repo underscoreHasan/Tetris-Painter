@@ -22,7 +22,7 @@ public abstract class Block implements Writable {
     // MODIFIES: this
     // EFFECTS: drops the block down 1 coordinate by altering the anchorPoint
     public void downOneLine() {
-        setAnchorPoint(anchorPoint.x, anchorPoint.y + 1);
+        setAnchorPoint(anchorPoint.x, anchorPoint.y + 50);
     }
 
     // REQUIRES: anchorPoint.x > 0 && anchorPoint.y > 0

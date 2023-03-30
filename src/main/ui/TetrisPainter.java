@@ -37,31 +37,14 @@ public class TetrisPainter extends JFrame {
         pack();
         centreOnScreen();
         setVisible(true);
-        //addTimer();
     }
-
-//    // Set up timer
-//    // modifies: none
-//    // effects:  initializes a timer that updates game each
-//    //           INTERVAL milliseconds
-//    private void addTimer() {
-//        Timer t = new Timer(INTERVAL, new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent ae) {
-//                game.update();
-//                gp.repaint();
-//            }
-//        });
-//
-//        t.start();
-//    }
 
     // Centres frame on desktop
     // modifies: this
     // effects:  location of frame is set so frame is centred on desktop
     private void centreOnScreen() {
-        Dimension scrn = Toolkit.getDefaultToolkit().getScreenSize();
-        setLocation((scrn.width - getWidth()) / 2, (scrn.height - getHeight()) / 2);
+        Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+        setLocation((screen.width - getWidth()) / 2, (screen.height - getHeight()) / 2);
     }
 
     /*
@@ -85,22 +68,22 @@ public class TetrisPainter extends JFrame {
             } else if (keyCode == KeyEvent.VK_SPACE) {
                 fixedBlocks.fixBlock(controlBlock);
                 newBlock();
+                gp.setControlBlock(controlBlock);
                 System.out.println("\nNew block generated!");
+//            } else if (move.equals("view")) {
+//                printFixedBlocks();
+//            } else if (move.equals("save")) {
+//                saveFixedBlocks();
+//            } else if (move.equals("load")) {
+//                loadControlBlock();
+//                loadFixedBlocks();
+//            } else {
+//                System.out.println("\nChosen move is not in the list of moves. Try again.");
             }
 
             gp.repaint();
             printControlBlockInfo();
 
-//        } else if (move.equals("view")) {
-//            printFixedBlocks();
-//        } else if (move.equals("save")) {
-//            saveFixedBlocks();
-//        } else if (move.equals("load")) {
-//            loadControlBlock();
-//            loadFixedBlocks();
-//        } else {
-//            System.out.println("\nChosen move is not in the list of moves. Try again.");
-//        }
         }
     }
 
