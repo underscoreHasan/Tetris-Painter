@@ -49,4 +49,24 @@ class BlockHeapTest {
         assertEquals(testHeap.getBlockList().get(1), testBlock2);
         assertEquals(testHeap.getScore(), 20);
     }
+
+    @Test
+    public void testRemoveBlockOnce() {
+        Block testBlock = new BlockI();
+
+        testHeap.fixBlock(testBlock);
+        testHeap.removeLatestBlock();
+        assertTrue(testHeap.getBlockList().isEmpty());
+    }
+
+    @Test
+    public void testRemoveBlockTwice() {
+        Block testBlock = new BlockI();
+
+        testHeap.fixBlock(testBlock);
+        testHeap.removeLatestBlock();
+        assertTrue(testHeap.getBlockList().isEmpty());
+        testHeap.removeLatestBlock();
+        assertTrue(testHeap.getBlockList().isEmpty());
+    }
 }

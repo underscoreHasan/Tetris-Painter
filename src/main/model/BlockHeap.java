@@ -36,9 +36,10 @@ public class BlockHeap implements Writable {
     }
 
     public void removeLatestBlock() {
-        blockList.remove(blockList.size() - 1);
-
-        score -= 10;
+        if (!blockList.isEmpty()) {
+            blockList.remove(blockList.size() - 1);
+            score -= 10;
+        }
     }
 
     // EFFECTS: returns this.blockList as JSON object
