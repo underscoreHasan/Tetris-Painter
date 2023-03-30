@@ -33,7 +33,7 @@ public class TetrisPainter extends JFrame {
 
     // Constructs main window
     // effects: sets up window in which Space Invaders game will be played
-    @SuppressWarnings("checkstyle:MethodLength")
+    @SuppressWarnings("methodlength")
     public TetrisPainter() {
         super("Tetris Painter");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
