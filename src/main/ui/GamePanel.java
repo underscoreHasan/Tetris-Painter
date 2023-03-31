@@ -7,50 +7,44 @@ import java.awt.*;
 
 import javax.swing.JPanel;
 
-/*
- * The panel in which the game is rendered.
- */
+// Represents the panel in which the game is rendered.
 public class GamePanel extends JPanel {
 
     private Block controlBlock;
     private BlockHeap fixedBlocks;
 
-    // Constructs a game panel
-    // effects:  sets size and background colour of panel,
-    //           updates this with the game elements to be displayed
+    // EFFECTS: Sets size of panel and updates this with the app elements to be displayed.
     public GamePanel(Block b, BlockHeap loB) {
         setPreferredSize(new Dimension(TetrisPainter.SCREEN_WIDTH, TetrisPainter.SCREEN_HEIGHT));
         this.controlBlock = b;
         this.fixedBlocks = loB;
     }
 
+    // EFFECTS: Overrides the paintComponent method in JComponent to draw the painter
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        drawGame(g);
+        drawPainter(g);
     }
 
-    // Draws the game
-    // modifies: g
-    // effects:  draws the game onto g
-    private void drawGame(Graphics g) {
+    // MODIFIES: g
+    // EFFECTS: draws the controlBlock and fixedBlocks onto g
+    private void drawPainter(Graphics g) {
         drawBlocks(g);
         drawBlock(g, controlBlock);
     }
 
-    // Draw the invaders
-    // modifies: g
-    // effects:  draws the invaders onto g
+    // MODIFIES: g
+    // EFFECTS: Draws the fixedBlocks onto g
     private void drawBlocks(Graphics g) {
         for (Block next : fixedBlocks.getBlockList()) {
             drawBlock(g, next);
         }
     }
 
-    // Draw an invader
-    // modifies: g
-    // effects:  draws the invader i onto g
+    // MODIFIES: g
+    // EFFECTS: Draws the Block b onto g
     private void drawBlock(Graphics g, Block b) {
         Color savedCol = g.getColor();
         g.setColor(b.getColor());

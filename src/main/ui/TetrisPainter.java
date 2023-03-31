@@ -16,6 +16,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Random;
 
+// Represents the main window within which the game is played
 public class TetrisPainter extends JFrame {
 
     private Block controlBlock;
@@ -31,8 +32,7 @@ public class TetrisPainter extends JFrame {
     protected static final int SCREEN_HEIGHT = 600;
     protected static final int SCREEN_WIDTH = 800;
 
-    // Constructs main window
-    // effects: sets up window in which Space Invaders game will be played
+    // EFFECTS: Constructs main window in which the Tetris Painter will be played
     @SuppressWarnings("methodlength")
     public TetrisPainter() {
         super("Tetris Painter");
@@ -73,6 +73,10 @@ public class TetrisPainter extends JFrame {
         });
         loadButton.setFocusable(false);
 
+        JLabel instruc = new JLabel("Arrows to move - C/V to rotate - SPACE to place - R to remove");
+        instruc.setFocusable(false);
+
+        add(instruc, BorderLayout.SOUTH);
         add(loadButton, BorderLayout.EAST);
         add(saveButton, BorderLayout.WEST);
         addKeyListener(new KeyHandler());
@@ -81,17 +85,15 @@ public class TetrisPainter extends JFrame {
         setVisible(true);
     }
 
-    // Centres frame on desktop
-    // modifies: this
-    // effects:  location of frame is set so frame is centred on desktop
+    // MODIFIES: this
+    // EFFECTS: Location of frame is set so it is centred on desktop
     private void centreOnScreen() {
         Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
         setLocation((screen.width - getWidth()) / 2, (screen.height - getHeight()) / 2);
     }
 
-    /*
-     * A key handler to respond to key events
-     */
+    // MODIFIES: controlBlock, fixedBlocks, gp, sp
+    // EFFECTS: Initiates a KeyHandler to respond to key events
     @SuppressWarnings("methodlength")
     private class KeyHandler extends KeyAdapter {
         @Override
@@ -128,8 +130,7 @@ public class TetrisPainter extends JFrame {
         }
     }
 
-    // REQUIRES: fixedBlocks.fixBlock(controlBlock) must have already executed
-    // MODIFIES: this, controlBlock
+    // MODIFIES: controlBlock
     // EFFECTS: sets controlBlock to be one of 7 random Blocks, places this curBlock at
     //          the starting position x = BOARD_WIDTH / 2, y = 2
     @SuppressWarnings("methodlength")
@@ -213,9 +214,7 @@ public class TetrisPainter extends JFrame {
         }
     }
 
-    /*
-     * Play the game
-     */
+    // EFFECTS: Plays the painter
     public static void main(String[] args) {
         new TetrisPainter();
     }

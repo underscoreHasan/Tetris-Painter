@@ -5,6 +5,7 @@ import model.BlockHeap;
 import javax.swing.*;
 import java.awt.*;
 
+// Represents the panel in which the score is rendered.
 public class ScorePanel extends JPanel {
     private static final String SCORE_TXT = "Score: ";
     private static final int LBL_WIDTH = 70;
@@ -12,9 +13,8 @@ public class ScorePanel extends JPanel {
     private BlockHeap fixedBlocks;
     private JLabel scoreLbl;
 
-    // Constructs a score panel
-    // effects: sets the background colour and draws the initial labels;
-    //          updates this with the game whose score is to be displayed
+    // EFFECTS: Sets the background colour and draws the initial label;
+    //          updates this with the score.
     public ScorePanel(BlockHeap fixedBlocks) {
         this.fixedBlocks = fixedBlocks;
         setBackground(new Color(180, 180, 180));
@@ -24,10 +24,8 @@ public class ScorePanel extends JPanel {
         add(Box.createHorizontalStrut(10));
     }
 
-    // Updates the score panel
-    // modifies: this
-    // effects:  updates number of invaders shot and number of missiles
-    //           remaining to reflect current state of game
+    // MODIFIES: this
+    // EFFECTS: Updates the score
     public void update() {
         scoreLbl.setText(SCORE_TXT + fixedBlocks.getScore());
         repaint();

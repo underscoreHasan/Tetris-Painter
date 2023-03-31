@@ -47,12 +47,60 @@
             "blockType": "Z",
             "anchorPointY": 11,
             "anchorPointX": 10
+        },
+        {
+            "rotationState": 0,
+            "blockType": "O",
+            "anchorPointY": 7,
+            "anchorPointX": 19
+        },
+        {
+            "rotationState": 0,
+            "blockType": "S",
+            "anchorPointY": 8,
+            "anchorPointX": 6
+        },
+        {
+            "rotationState": 0,
+            "blockType": "Z",
+            "anchorPointY": 2,
+            "anchorPointX": 3
+        },
+        {
+            "rotationState": 0,
+            "blockType": "I",
+            "anchorPointY": 2,
+            "anchorPointX": 13
+        },
+        {
+            "rotationState": 0,
+            "blockType": "L",
+            "anchorPointY": 16,
+            "anchorPointX": 5
+        },
+        {
+            "rotationState": 0,
+            "blockType": "S",
+            "anchorPointY": 2,
+            "anchorPointX": 21
+        },
+        {
+            "rotationState": 0,
+            "blockType": "L",
+            "anchorPointY": 9,
+            "anchorPointX": 1
+        },
+        {
+            "rotationState": 0,
+            "blockType": "I",
+            "anchorPointY": 3,
+            "anchorPointX": 10
         }
     ],
     "controlBlock": {
         "rotationState": 0,
-        "blockType": "O",
+        "blockType": "I",
         "anchorPointY": 2,
-        "anchorPointX": 19
+        "anchorPointX": 5
     }
 }

@@ -29,5 +29,13 @@
 - As a user, I want to be able to be able to load the saved state of my painting from file (if I so choose)
 
 ## Attributions:
-- The UI in this project draws inspiration from the implementation of the UI in TellerApp.
+- The Console UI in this project draws inspiration from the implementation of the UI in TellerApp. 
+- The GUI in this project draws inspiration from the implementation of the UI in SpaceInvadersBase.
 - The JsonReader and JsonWriter classes in this project draw inspiration from the implementation of the JsonReader and JsonWriter in JsonSerializationDemo.
+
+# Instructions for Grader
+- You can generate the first required action related to adding Xs to a Y by pressing the Spacebar.
+- You can generate the second required action related to adding Xs to a Y by pressing the R key.
+- You can locate my visual component by looking at the center panel with blocks on it in the GUI.
+- You can save the state of my application by clicking the save button.
+- You can reload the state of my application by clicking the load button.

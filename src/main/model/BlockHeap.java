@@ -20,7 +20,6 @@ public class BlockHeap implements Writable {
         score = 0;
     }
 
-    // REQUIRES: block.anchorPoint.y > 0
     // MODIFIES: this
     // EFFECTS: Adds the curPiece to the fixedBlocks
     public void fixBlock(Block block) {
@@ -35,6 +34,8 @@ public class BlockHeap implements Writable {
         score += 10;
     }
 
+    // MODIFIES: this
+    // EFFECTS: Removes the latest placed block from the fixedBlocks
     public void removeLatestBlock() {
         if (!blockList.isEmpty()) {
             blockList.remove(blockList.size() - 1);
