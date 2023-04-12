@@ -2,16 +2,15 @@ package ui;
 
 import model.Block;
 import model.BlockHeap;
+import model.Event;
+import model.EventLog;
 import model.shapedblocks.*;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Random;
@@ -48,6 +47,7 @@ public class TetrisPainter extends JFrame {
 
         JButton saveButton = createSaveButton();
         JButton loadButton = createLoadButton();
+        createWindowListener();
 
         JLabel instruc = new JLabel("Arrows to move - C/V to rotate - SPACE to place - R to remove");
         instruc.setFocusable(false);
@@ -59,6 +59,17 @@ public class TetrisPainter extends JFrame {
         pack();
         centreOnScreen();
         setVisible(true);
+    }
+
+    private void createWindowListener() {
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                EventLog el =  EventLog.getInstance();
+                for (Event next : el) {
+                    System.out.println(next.toString() + "\n");
+                }
+            }
+        });
     }
 
     private JButton createSaveButton() {

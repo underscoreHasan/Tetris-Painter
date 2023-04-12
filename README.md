@@ -39,3 +39,46 @@
 - You can locate my visual component by looking at the center panel with blocks on it in the GUI.
 - You can save the state of my application by clicking the save button.
 - You can reload the state of my application by clicking the load button.
+
+# Phase 4: Task 2:
+
+Sample Event Log:
+
+Wed Apr 12 14:29:23 PDT 2023
+Added O-shaped block at AnchorPoint: [5,2]
+
+Wed Apr 12 14:29:24 PDT 2023
+Added Z-shaped block at AnchorPoint: [5,8]
+
+Wed Apr 12 14:29:25 PDT 2023
+Added L-shaped block at AnchorPoint: [2,5]
+
+Wed Apr 12 14:29:27 PDT 2023
+Added J-shaped block at AnchorPoint: [9,3]
+
+Wed Apr 12 14:29:28 PDT 2023
+Removed latest placed block from fixedBlocks: J-shaped block at AnchorPoint: [9,3]
+
+Wed Apr 12 14:29:29 PDT 2023
+Removed latest placed block from fixedBlocks: L-shaped block at AnchorPoint: [2,5]
+
+Wed Apr 12 14:29:31 PDT 2023
+Added T-shaped block at AnchorPoint: [3,5]
+
+Wed Apr 12 14:29:33 PDT 2023
+Added S-shaped block at AnchorPoint: [8,11]
+
+Wed Apr 12 14:29:36 PDT 2023
+Removed latest placed block from fixedBlocks: S-shaped block at AnchorPoint: [8,11]
+
+Wed Apr 12 14:29:36 PDT 2023
+Removed latest placed block from fixedBlocks: T-shaped block at AnchorPoint: [3,5]
+
+Wed Apr 12 14:29:36 PDT 2023
+Removed latest placed block from fixedBlocks: Z-shaped block at AnchorPoint: [5,8]
+
+Wed Apr 12 14:29:37 PDT 2023
+Removed latest placed block from fixedBlocks: O-shaped block at AnchorPoint: [5,2]
+
+Wed Apr 12 14:29:37 PDT 2023
+No blocks placed, nothing can be removed!
