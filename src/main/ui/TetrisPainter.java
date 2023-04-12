@@ -33,7 +33,6 @@ public class TetrisPainter extends JFrame {
     protected static final int SCREEN_WIDTH = 800;
 
     // EFFECTS: Constructs main window in which the Tetris Painter will be played
-    @SuppressWarnings("methodlength")
     public TetrisPainter() {
         super("Tetris Painter");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -47,6 +46,22 @@ public class TetrisPainter extends JFrame {
         add(gp);
         add(sp, BorderLayout.NORTH);
 
+        JButton saveButton = createSaveButton();
+        JButton loadButton = createLoadButton();
+
+        JLabel instruc = new JLabel("Arrows to move - C/V to rotate - SPACE to place - R to remove");
+        instruc.setFocusable(false);
+
+        add(instruc, BorderLayout.SOUTH);
+        add(loadButton, BorderLayout.EAST);
+        add(saveButton, BorderLayout.WEST);
+        addKeyListener(new KeyHandler());
+        pack();
+        centreOnScreen();
+        setVisible(true);
+    }
+
+    private JButton createSaveButton() {
         JButton saveButton = new JButton("Save");
         saveButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -54,7 +69,10 @@ public class TetrisPainter extends JFrame {
             }
         });
         saveButton.setFocusable(false);
+        return saveButton;
+    }
 
+    private JButton createLoadButton() {
         JButton loadButton = new JButton("Load");
         loadButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -72,17 +90,7 @@ public class TetrisPainter extends JFrame {
             }
         });
         loadButton.setFocusable(false);
-
-        JLabel instruc = new JLabel("Arrows to move - C/V to rotate - SPACE to place - R to remove");
-        instruc.setFocusable(false);
-
-        add(instruc, BorderLayout.SOUTH);
-        add(loadButton, BorderLayout.EAST);
-        add(saveButton, BorderLayout.WEST);
-        addKeyListener(new KeyHandler());
-        pack();
-        centreOnScreen();
-        setVisible(true);
+        return loadButton;
     }
 
     // MODIFIES: this
