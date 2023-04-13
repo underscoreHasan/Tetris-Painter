@@ -82,3 +82,14 @@ Removed latest placed block from fixedBlocks: O-shaped block at AnchorPoint: [5,
 
 Wed Apr 12 14:29:37 PDT 2023
 No blocks placed, nothing can be removed!
+
+# Phase 4: Task 3:
+
+Looking at my UML class diagram, there are circular field relationships in my GUI to Block and BlockHeap. The reason for
+this is maintaining focus of the controlBlock required construction of a new GamePanel object and replacing the old reference,
+instead of handling the change by repainting the existing GamePanel. This could have been corrected if I had deeper knowledge 
+of the Swing library and the painting methods.
+
+I could also improve my implementation of the specific Block types by having mathematically calculated rotations instead
+ of static "rotation states". This would have reduced the chances of human error when creating and hardcoding the rotation
+ states.
