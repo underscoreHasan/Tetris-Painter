@@ -87,7 +87,7 @@ No blocks placed, nothing can be removed!
 
 Looking at my UML class diagram, there are circular field relationships in my GUI to Block and BlockHeap. The reason for
 this is maintaining focus of the controlBlock required construction of a new GamePanel object and replacing the old reference,
-instead of handling the change by repainting the existing GamePanel. This could have been corrected if I had deeper knowledge 
+instead of handling the change by repainting the existing GamePanel. This could have been corrected and refactored if I had deeper knowledge 
 of the Swing library and the painting methods.
 
 I could also improve my implementation of the specific Block types by having mathematically calculated rotations instead
