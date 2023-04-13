@@ -97,7 +97,6 @@ public class TetrisPainter extends JFrame {
                 add(sp, BorderLayout.NORTH);
                 pack();
                 gp.repaint();
-                printControlBlockInfo();
             }
         });
         loadButton.setFocusable(false);
@@ -139,12 +138,10 @@ public class TetrisPainter extends JFrame {
                 newBlock();
                 gp.setControlBlock(controlBlock);
                 sp.update();
-                System.out.println("\nNew block generated!");
             } else {
                 System.out.println("\nChosen move is not in the list of moves. Try again.");
             }
             gp.repaint();
-            printControlBlockInfo();
 
         }
     }
