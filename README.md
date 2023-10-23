@@ -10,7 +10,7 @@
 
 - This project was of interest to me since I had never coded a GUI-based application that requires large amounts of user interaction before, and it served as an excellent launchpad into GUI development, Software Development Life Cycles, and Test Driven Development. Importantly, the project also greatly increased my profiency in Java, OOP, and data structures and algorithms.
 
-### The following are the User Stories that were successfully implemented during the term project:
+### User Stories set out during the term project:
 
 - As a user, I want to be able to control the movement of Tetris blocks.
 - As a user, I want to be able to control the orientation of Tetris blocks.
