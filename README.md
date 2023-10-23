@@ -1,23 +1,16 @@
-# Hasan Noor's Personal Project
-## Tetris Painter
+# Tetris Painter
 
-- What will the application do?
+- This app provides a Tetris-style GUI for the user to freely move around and place randomly generated Tetris blocks in order to draw an image of their liking. Additionally, the paintings are saveable and loadable from memory as JSON.
 
-    - The application will provide a graphical environment to paint in that can be controlled by the users keyboard.
-  The app will be rendered simply and will follow the rules of a Tetris board. To save a state of a painting, the user
-  would have to click a save button the game. A score will also be tracked.
+### Example:
+##### Two Among Us crewmates looking at each other, the desert sun shining in the background
+###### - Vincent Van Gogh, 1889
 
+<img src="/src/assets/images/Drawing.png" width="600">
 
-- Who will use it?
+- This project was of interest to me since I had never coded a GUI-based application that requires large amounts of user interaction before, and it served as an excellent launchpad into GUI development, Software Development Life Cycles, and Test Driven Development. Importantly, the project also greatly increased my profiency in Java, OOP, and data structures and algorithms.
 
-    - The application could be used by **anyone** who wants to use the painter and has a computer that is able to render it.
-
-
-- Why is this project of interest to you?
-    - This project is of interest to me since I have never coded a GUI-based application that requires large amounts of
-  user interaction before.
-
-## User Stories:
+### The following are the User Stories that were successfully implemented during the term project:
 
 - As a user, I want to be able to control the movement of Tetris blocks.
 - As a user, I want to be able to control the orientation of Tetris blocks.
